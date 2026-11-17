@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Prioritized Watchlist</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #141414;
+            color: #ffffff;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            color: #E50914;
+            margin-bottom: 10px;
+        }
+        p {
+            color: #aaa;
+            margin-bottom: 30px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #333;
+        }
+        th {
+            background-color: #2b2b2b;
+            color: #E50914;
+            cursor: pointer;
+            user-select: none;
+        }
+        th:hover {
+            background-color: #383838;
+        }
+        tr:hover {
+            background-color: #262626;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            background: #2b2b2b;
+            border: 1px solid #444;
+            color: white;
+            padding: 6px;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="number"] {
+            text-align: center;
+        }
+        input[type="checkbox"] {
+            transform: scale(1.3);
+            cursor: pointer;
+            accent-color: #E50914;
+        }
+        .watched {
+            text-decoration: line-through;
+            opacity: 0.4;
+        }
+        .btn-container {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            background-color: #E50914;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #b80710;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🎬 My Movie Watchlist</h1>
+    <p>Type your movies below. Click the <b>"Priority"</b> header to sort them automatically (1 = Watch First)!</p>
+
+    <div class="container">
+        <table id="movieTable">
+            <thead>
+                <tr>
+                    <th onclick="sortTable(0)">Movie Title 📝</th>
+                    <th onclick="sortTable(1)" style="text-align: center; width: 100px;">Priority 🚨</th>
+                    <th onclick="sortTable(2)">Genre 🎭</th>
+                    <th onclick="sortTable(3)">Runtime ⏱️</th>
+                    <th onclick="sortTable(4)">Where to Watch 📺</th>
+                    <th style="text-align: center; width: 80px;">Done? ✅</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 10 Blank Rows to Start With -->
+                <tr>
+                    <td><input type="text" placeholder="e.g., Inception"></td>
+                    <td><input type="number" min="1" max="5" placeholder="1"></td>
+                    <td><input type="text" placeholder="Sci-Fi"></td>
+                    <td><input type="text" placeholder="148 min"></td>
+                    <td><input type="text" placeholder="Netflix"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+                <tr>
+                    <td><input type="text"></td><td><input type="number" min="1" max="5"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+                    <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="btn-container">
+            <button onclick="addRow()">+ Add New Row</button>
+        </div>
+    </div>
+
+    <script>
+        // Checkbox function to cross out watched movies
+        function toggleWatched(checkbox) {
+            const row = checkbox.closest('tr');
+            if (checkbox.checked) {
+                row.classList.add('watched');
+            } else {
+                row.classList.remove('watched');
+            }
+        }
+
+        // Add a blank row to the table
+        function addRow() {
+            const tbody = document.querySelector('#movieTable tbody');
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td><input type="text"></td>
+                <td><input type="number" min="1" max="5"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td><input type="text"></td>
+                <td style="text-align: center;"><input type="checkbox" onchange="toggleWatched(this)"></td>
+            `;
+            tbody.appendChild(newRow);
+        }
+
+        // Sort function when clicking column headers
+        function sortTable(colIndex) {
+            const table = document.getElementById("movieTable");
+            const tbody = table.querySelector("tbody");
+            const rows = Array.from(tbody.querySelectorAll("tr"));
+
+            rows.sort((a, b) => {
+                const valA = a.cells[colIndex].querySelector('input').value.trim();
+                const valB = b.cells[colIndex].querySelector('input').value.trim();
+
+                // Put completely empty rows at the very bottom
+                if (valA === "" && valB !== "") return 1;
+                if (valA !== "" && valB === "") return -1;
+                if (valA === "" && valB === "") return 0;
+
+                // If sorting by Priority (Column index 1), sort numerically
+                if (colIndex === 1) {
+                    return parseFloat(valA) - parseFloat(valB);
+                }
+
+                // Default alphabetical sort for text columns
+                return valA.localeCompare(valB, undefined, {numeric: true, sensitivity: 'base'});
+            });
+
+            // Re-append sorted rows
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</body>
+</html>
